@@ -1,0 +1,33 @@
+html {
+  font-family: Helvetica;
+  font-size: 10px;
+  display: inline-block;
+  margin: 0px auto;
+  text-align: center;
+}
+div {
+  float:left;
+  border: 1px solid #ddd;
+  background-color: #bbb;
+}
+button {
+ background-color: #aaaaaa;
+ border: none;
+ color: white;
+ text-decoration: none;
+ font-size: 20px;
+ margin: 2px;
+ cursor: pointer;
+  height: 96px;
+  width: 96px;
+}
+button:hover {
+ background-color: #ccc;
+}
+button .on { 
+  background-color: #fb1;
+}
+
+.button2 {
+ background-color: #77878A;
+}

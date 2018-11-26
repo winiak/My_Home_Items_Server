@@ -13,7 +13,9 @@ enum ItemStates { OFF, ON, UP, DOWN };
 
 enum ItemTypes { LIGHT, SHIELD, TEMP };
 
-ItemsDef HomeItems[16] = {
+#define NUMBER_OF_ITEMS 16
+
+ItemsDef HomeItems[NUMBER_OF_ITEMS] = {
   {1, LIGHT, OFF, OFF, 0, "Kuchnia 1", "kuchnia_1"},
   {2, LIGHT, OFF, OFF, 0, "Kuchnia 2", "kuchnia_2"},
   {3, LIGHT, OFF, OFF, 0, "Jadalnia 1", "jadalnia_1"},
