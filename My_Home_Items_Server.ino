@@ -11,14 +11,10 @@ ESP8266WebServer server(80);
 // Variable to store the HTTP request
 String header;
 
-String output5State = "off";
-String output4State = "off";
-const int output5 = 8;
-const int output4 = 7;
-
-
 void setup() {
   Serial.begin(115200);
+  screen_setup();
+  
   wifi_setup();
 
   server.on("/", mainPage);

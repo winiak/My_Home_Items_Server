@@ -1,6 +1,8 @@
+String temp_string;
 
 void wifi_setup() {
   // Connect to Wi-Fi network with SSID and password
+  String con_ssid;
   Serial.print("Connecting to ");
   Serial.println(ssid);
   WiFi.begin(ssid, password);
@@ -11,9 +13,13 @@ void wifi_setup() {
   // Print local IP address and start web server
   Serial.println("");
   Serial.print("Connected to ");
+  temp_string = ssid;
+  writeLine("Connected to " + temp_string);
   Serial.println(ssid);
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
+  //temp_string = sprint();
+  writeLine("IP address: " + WiFi.localIP().toString());
 
   if (MDNS.begin("esp8266")) {
     Serial.println("MDNS responder started");
@@ -54,3 +60,30 @@ void drawGraph() {
 
   server.send(200, "image/svg+xml", out);
 }
+
+void readArguments() {
+  String message = "URI: ";
+  message += server.uri();
+  message += "";
+  message += (server.method() == HTTP_GET) ? " (GET)" : " (POST)";
+  // print it
+  Serial.println(message);
+  writeLine(message);
+  
+  message = "Arg:";
+  for (uint8_t i = 0; i < 6; i++) {
+    recArguments[i].arg_name = "";
+    recArguments[i].arg_value = "";
+  }
+  for (uint8_t i = 0; i < server.args(); i++) {
+    recArguments[i].arg_name = server.argName(i);
+    recArguments[i].arg_value = server.arg(i);
+    message += " " + server.argName(i) + "=" + server.arg(i) + ";";
+  }
+  //message += "";
+
+  // print it
+  Serial.println(message);
+  writeLine(message);
+}
+

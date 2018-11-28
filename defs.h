@@ -7,6 +7,9 @@ typedef struct {
   long item_value;
   char item_name[16];
   char db_name[16];
+  // add floor
+  // add address (of controller) -1 == local
+  // assigned HW pin
 } ItemsDef;
 
 enum ItemStates { OFF, ON, UP, DOWN };
@@ -33,3 +36,12 @@ ItemsDef HomeItems[NUMBER_OF_ITEMS] = {
   {15, LIGHT, OFF, OFF, 0, "Taras 1", "taras_1"},
   {16, LIGHT, OFF, OFF, 0, "Taras 2", "taras_2"}
 };
+
+typedef struct {
+  String arg_name;
+  String arg_value;
+} argDef;
+
+argDef recArguments[6];
+
+
