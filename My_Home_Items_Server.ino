@@ -18,6 +18,7 @@ const int output4 = 7;
 
 
 void setup() {
+  setup_shift();
   Serial.begin(115200);
   wifi_setup();
 

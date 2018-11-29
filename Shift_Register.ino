@@ -1,52 +1,44 @@
-/*
-int outEnPin = D0;
-int latchPin = D1;
-int dataPin = D2;
-int clockPin = D3;
+int outEnPin = D8;    // PIN 13
+int latchPin = D7;    // PIN 12
+int dataPin = D6;     // PIN 14
+int clockPin = D5;    // PIN 11
 
 int numOfRegisters = 2;
 byte* registerState;
 
+void test_shift() {
+  if (server.argName(0) == "item") {
+    Serial.println(server.arg(0));
+    int val = server.arg(0).toInt() - 1;
+    if (val == 0) {
+      Serial.println("Reset all");
+      for (unsigned int curPin = 1; curPin <= 16; curPin++) {
+        regWrite(curPin, 1);
+        delay(10);
+      }
+    } else {
+      Serial.print("Set: "); Serial.println(val);
+      regWrite(val, 0);
+    }
+  }
+}
 
-void setup() {
+void setup_shift() {
   pinMode(outEnPin, OUTPUT);
+  //disable output first (high impedance of Latch
+  digitalWrite(outEnPin, HIGH);
   pinMode(latchPin, OUTPUT);
   pinMode(dataPin, OUTPUT);
   pinMode(clockPin, OUTPUT);
 
-  // deactivate all outputs (make sure relays won't turn on)
-  digitalWrite(latchPin, HIGH);
-  
-  //Initialize array
   registerState = new byte[numOfRegisters];
-  for (size_t i = 0; i < numOfRegisters; i++) {
-    registerState[i] = 0;
-  }
-
   // reset all outputs to HIGH == relays off
-  resetRegisters();
-  digitalWrite(latchPin, LOW);
-}
-
-void loop() {
-  /*
-  // put your main code here, to run repeatedly:
-  for (unsigned int curPin = 1; curPin <= 16; curPin++) {
-     regWrite(curPin, 1);
-     delay(1000);
-  }
-  for (unsigned int curPin = 1; curPin <= 16; curPin++) {
-     regWrite(curPin, 0);
-     delay(1000);
-  }
-  *//*
-}
-
-void resetRegisters() {
-  for (int i = 0; i < numOfRegisters; i++) {
-    byte* states = &registerState[i];
-    shiftOut(dataPin, clockPin, MSBFIRST, *states);
-  }
+    for (unsigned int curPin = 1; curPin <= 16; curPin++) {
+      regWrite(curPin, 1);
+      delay(10);
+    }
+  
+  digitalWrite(outEnPin, LOW);
 }
 
 void regWrite(int pin, bool state){
@@ -74,4 +66,3 @@ void regWrite(int pin, bool state){
   //End session
   digitalWrite(latchPin, HIGH);
 }
- */

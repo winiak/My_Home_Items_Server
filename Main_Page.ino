@@ -2,6 +2,7 @@
 
 void mainPage() {
   // snprintf
+  test_shift();
   String out = "";
   out += "\
     <!DOCTYPE html><html>\
