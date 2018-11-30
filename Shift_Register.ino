@@ -1,3 +1,7 @@
+#ifndef DEFS
+#include "defs.h"
+#endif
+
 int outEnPin = D8;    // PIN 13
 int latchPin = D7;    // PIN 12
 int dataPin = D6;     // PIN 14

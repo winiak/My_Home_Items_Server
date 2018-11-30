@@ -3,6 +3,9 @@
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
+#ifndef DEFS
+#include "defs.h"
+#endif
 
 #include "config.h"
 
@@ -30,4 +33,7 @@ void setup() {
 
 void loop() {
   server.handleClient();
+  requestExecution();
+  timedExecution();
+  delay(10);
 }

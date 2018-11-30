@@ -1,26 +1,20 @@
+#ifndef DEFS
 #include "defs.h"
+#endif
 
 void mainPage() {
 
   // get arguments
   readArguments();
   
-  // execute action
-  if (recArguments[0].arg_name == "item") {
-//    Serial.print(recArguments[0].arg_name);
-//    Serial.print(recArguments[0].arg_value);
-    if (recArguments[0].arg_value == "all_lights") {
-    }
-    else {
-        for (uint8_t i = 0; i < NUMBER_OF_ITEMS; i++)
-          if (HomeItems[i].id == (recArguments[0].arg_value).toInt()) {
-            HomeItems[i].item_value = (recArguments[1].arg_value == "ON" ? 1 : 0);
-          }
-    }
-  }
+  // execute action ==> in main loop
+  getRequestExec();
+
+  // force execution loop
+  requestExecution();
   
   // snprintf
-  test_shift();
+  //test_shift();
   String out = "";
   out += "\
     <!DOCTYPE html><html>\
@@ -41,9 +35,9 @@ void mainPage() {
         out += "<div><a href=\"?item=";
         out.concat(HomeItems[i].id);
         out += "&value=";
-        out += (HomeItems[i].item_value == 0 ? "ON" : "OFF");
+        out += (HomeItems[i].current_state ==  OFF ? "ON" : "OFF");
         out += "\"><button";
-        out += (HomeItems[i].item_value == 1 ? " class=\"on\"" : "");  
+        out += (HomeItems[i].current_state == ON ? " class=\"on\"" : "");  
         out += ">";
         out.concat(HomeItems[i].item_name);
         out += "</button></a></div>";
