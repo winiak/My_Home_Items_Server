@@ -12,6 +12,7 @@ ESP8266WebServer server(80);
 String header;
 
 void setup() {
+  setup_shift();
   Serial.begin(115200);
   screen_setup();
   
