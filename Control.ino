@@ -41,6 +41,18 @@ void requestExecution() {
         }
         break;
       case SHIELD:      // // ONLY LOCAL AT THE MOMENT
+        /**
+         * Possible states: 
+         * - UP, activation_time = 0
+         * - DOWN, activation_time = 0
+         * - UP and set DOWN, activation_time++ => set state ON
+         * - ON and set DOWN, check if activation_time < max_activation_time => set state DOWN
+         * - DOWN and set UP, activation_time++ => set state ON
+         * - ON and set UP, check if activation_time < max_activation_time => set state UP
+         * - ON and set OFF => activation_time = 0, set state OFF
+         * Future:
+         * - use rid-swtich sensor to leave SHIELD slightly open
+         */
         break;
     }
 }
