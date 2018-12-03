@@ -5,7 +5,14 @@ enum ItemStates { OFF, ON, UP, DOWN };
 enum ItemTypes { LIGHT, SHIELD, TEMP };
 
 typedef struct {
+  uint8_t id;
+  char group_name[16];
+  uint8_t no_of_items;  
+} ItemsGroups;
+
+typedef struct {
   int id;
+  uint8_t group_id;
   ItemTypes type;           // see Item types
   ItemStates set_state;      // see Item states
   ItemStates current_state;
@@ -18,25 +25,38 @@ typedef struct {
   long activation_time;       // active time (how much time to activate shileds / how much time light is on)
 } ItemsDef;
 
-#define NUMBER_OF_ITEMS 16
+#define NUMBER_OF_ITEMS 24
 
-ItemsDef HomeItems[NUMBER_OF_ITEMS] = {
-  {1, LIGHT, OFF, OFF, 0, "Kuchnia 1", "kuchnia_1", 0, 0, 1, 0},
-  {2, LIGHT, OFF, OFF, 0, "Kuchnia 2", "kuchnia_2", 0, 0, 1, 0},
-  {3, LIGHT, OFF, OFF, 0, "Jadalnia 1", "jadalnia_1", 0, 0, 1, 0},
-  {4, LIGHT, OFF, OFF, 0, "Jadalnia 2", "jadalnia_2", 0, 0, 1, 0},
-  {5, LIGHT, OFF, OFF, 0, "Salon 1", "salon_1", 0, 0, 1, 0},
-  {6, LIGHT, OFF, OFF, 0, "Salon 2", "salon_2", 0, 0, 1, 0},
-  {7, LIGHT, OFF, OFF, 0, "Biuro", "biuro", 0, 0, 1, 0},
-  {8, LIGHT, OFF, OFF, 0, "Lazienka", "lazienka", 0, 0, 1, 0},
-  {9, LIGHT, OFF, OFF, 0, "Pom Gosp", "pom_gosp", 0, 0, 1, 0},
-  {10, LIGHT, OFF, OFF, 0, "Wiatrolap", "wiatrolap", 0, 0, 1, 0},
-  {11, LIGHT, OFF, OFF, 0, "Garaz 1", "garaz_1", 0, 0, 1, 0},
-  {12, LIGHT, OFF, OFF, 0, "Garaz 2", "garaz_2", 0, 0, 1, 0},
-  {13, LIGHT, OFF, OFF, 0, "Drzwi", "drzwi", 0, 0, 1, 0},
-  {14, LIGHT, OFF, OFF, 0, "Brama", "brama", 0, 0, 1, 0},
-  {15, LIGHT, OFF, OFF, 0, "Taras 1", "taras_1", 0, 0, 1, 0},
-  {16, LIGHT, OFF, OFF, 0, "Taras 2", "taras_2", 0, 0, 1, 0}
+ItemsGroups HomeGroups[2] = {
+  {1, "OSW parter", 16},
+  {2, "ROL parter", 8}
+};
+
+ItemsDef HomeItems[] = {
+  {1, 1, LIGHT, OFF, OFF, 0, "Kuchnia 1", "o_kuchnia_1", 0, 0, 1, 0},
+  {2, 1, LIGHT, OFF, OFF, 0, "Kuchnia 2", "o_kuchnia_2", 0, 0, 2, 0},
+  {3, 1, LIGHT, OFF, OFF, 0, "Jadalnia 1", "o_jadalnia_1", 0, 0, 3, 0},
+  {4, 1, LIGHT, OFF, OFF, 0, "Jadalnia 2", "o_jadalnia_2", 0, 0, 4, 0},
+  {5, 1, LIGHT, OFF, OFF, 0, "Salon 1", "o_salon_1", 0, 0, 5, 0},
+  {6, 1, LIGHT, OFF, OFF, 0, "Salon 2", "o_salon_2", 0, 0, 6, 0},
+  {7, 1, LIGHT, OFF, OFF, 0, "Biuro", "o_biuro", 0, 0, 7, 0},
+  {8, 1, LIGHT, OFF, OFF, 0, "Lazienka", "o_lazienka", 0, 0, 8, 0},
+  {9, 1, LIGHT, OFF, OFF, 0, "Pom Gosp", "o_pom_gosp", 0, 0, 9, 0},
+  {10, 1, LIGHT, OFF, OFF, 0, "Wiatrolap", "o_wiatrolap", 0, 10, 1, 0},
+  {11, 1, LIGHT, OFF, OFF, 0, "Garaz 1", "o_garaz_1", 0, 0, 11, 0},
+  {12, 1, LIGHT, OFF, OFF, 0, "Garaz 2", "o_garaz_2", 0, 0, 12, 0},
+  {13, 1, LIGHT, OFF, OFF, 0, "Drzwi", "o_drzwi", 0, 0, 13, 0},
+  {14, 1, LIGHT, OFF, OFF, 0, "Brama", "o_brama", 0, 0, 14, 0},
+  {15, 1, LIGHT, OFF, OFF, 0, "Taras 1", "o_taras_1", 0, 0, 15, 0},
+  {16, 1, LIGHT, OFF, OFF, 0, "Taras 2", "o_taras_2", 0, 0, 0, 0},
+  {17, 2, SHIELD, OFF, OFF, 0, "Kuchnia", "r_kuchnia", 0, 0, 1, 0},
+  {18, 2, SHIELD, OFF, OFF, 0, "Narozne", "r_narozne", 0, 0, 2, 0},
+  {19, 2, SHIELD, OFF, OFF, 0, "Jadalnia", "r_jadalnia", 0, 0, 3, 0},
+  {20, 2, SHIELD, OFF, OFF, 0, "Salon", "r_salon", 0, 0, 4, 0},
+  {21, 2, SHIELD, OFF, OFF, 0, "Ogrod HS", "r_ogrod", 0, 0, 5, 0},
+  {22, 2, SHIELD, OFF, OFF, 0, "Biuro", "r_biuro", 0, 0, 6, 0},
+  {23, 2, SHIELD, OFF, OFF, 0, "Garaz", "r_garaz", 0, 0, 7, 0},
+  {24, 2, SHIELD, OFF, OFF, 0, "Pom Gosp", "r_pom_gosp", 0, 0, 8, 0}
 };
 
 typedef struct {
@@ -45,5 +65,3 @@ typedef struct {
 } argDef;
 
 argDef recArguments[6];
-
-

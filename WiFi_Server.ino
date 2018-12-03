@@ -68,7 +68,7 @@ void readArguments() {
   message += (server.method() == HTTP_GET) ? " (GET)" : " (POST)";
   // print it
   Serial.println(message);
-  writeLine(message);
+  //writeLine(message);
   
   message = "Arg:";
   for (uint8_t i = 0; i < 6; i++) {
@@ -86,4 +86,3 @@ void readArguments() {
   Serial.println(message);
   writeLine(message);
 }
-
