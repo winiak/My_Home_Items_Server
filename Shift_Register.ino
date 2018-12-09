@@ -7,8 +7,25 @@ int latchPin = D7;    // PIN 12
 int dataPin = D6;     // PIN 14
 int clockPin = D5;    // PIN 11
 
-int numOfRegisters = 2;
+int numOfRegisters = 4;
 byte* registerState;
+
+void printBits(byte myByte){
+ for(byte mask = 0x80; mask; mask >>= 1){
+   if(mask  & myByte)
+       Serial.print('1');
+   else
+       Serial.print('0');
+ }
+}
+
+void print_shift_registers() {
+  for (int i = 0; i < numOfRegisters; i++) {
+    printBits(registerState[i]);
+    Serial.print(" ");
+  }
+  Serial.println();
+}
 
 void test_shift() {
   if (server.argName(0) == "item") {
@@ -34,10 +51,23 @@ void setup_shift() {
   pinMode(latchPin, OUTPUT);
   pinMode(dataPin, OUTPUT);
   pinMode(clockPin, OUTPUT);
+/*
+  for (uint8_t i = 0; i < numOfRegisters; i++)
+    registerState[i] = 255;
 
+  /*
+  for (uint8_t i = 0; i < numOfRegisters * 8; i++) {
+    regWrite(i, 1);
+    delay(10);
+  }
+  digitalWrite(outEnPin, LOW);
+  */
   registerState = new byte[numOfRegisters];
-  // reset all outputs to HIGH == relays off
-    for (unsigned int curPin = 1; curPin <= 16; curPin++) {
+  for (uint8_t i = 0; i < numOfRegisters; i++)
+    registerState[i] = 255;
+
+// reset all outputs to HIGH == relays off
+    for (unsigned int curPin = 1; curPin <= numOfRegisters*2; curPin++) {
       regWrite(curPin, 1);
       delay(10);
     }

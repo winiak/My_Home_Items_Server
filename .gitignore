@@ -1,2 +1,8 @@
 
 include/config.h
+*.pdf
+hardware/FV12AORI5DSZ6JG.LARGE.jpg
+*.gif
+*.png
+*.xcf
+*.MOV

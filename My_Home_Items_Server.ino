@@ -9,12 +9,14 @@
 
 #include "config.h"
 
+
 ESP8266WebServer server(80);
 
 // Variable to store the HTTP request
 String header;
 
 void setup() {
+  wdt_disable();
   setup_shift();
   Serial.begin(115200);
   screen_setup();
@@ -22,18 +24,29 @@ void setup() {
   wifi_setup();
 
   server.on("/", mainPage);
+  server.on("/request", processPage);
   server.on("/test.svg", drawGraph);
+  //server.on("/icon_swiatlo_parter.svg", []() { server.send(200, "image/svg+xml", icon_swiatlo_parter); }); 
+  //server.on("/icon_swiatlo_pietro.svg", []() { server.send(200, "image/svg+xml", icon_swiatlo_pietro); }); 
+  server.on("/icons/sbu.svg", drawShieldButtonUp); 
+  server.on("/icons/sbst.svg", drawShieldButtonStop); 
+  server.on("/icons/sbd.svg", drawShieldButtonDown); 
+  
   server.on("/inline", []() {
     server.send(200, "text/plain", "this works as well");
   });
   server.onNotFound(handleNotFound);
   server.begin();
   Serial.println("HTTP server started");
+
+  //wdt_enable(200);
 }
 
 void loop() {
+  //wdt_reset();
   server.handleClient();
   requestExecution();
   timedExecution();
   delay(10);
+  
 }

@@ -1,3 +1,4 @@
+
 String temp_string;
 
 void wifi_setup() {
@@ -61,7 +62,23 @@ void drawGraph() {
   server.send(200, "image/svg+xml", out);
 }
 
-void readArguments() {
+String getArgument(String argumentName) {
+  if (server.args() == 0)
+    return "";
+  if (argumentName == "")
+    return "";
+  for (uint8_t i = 0; i < MAX_ARGUMENTS; i++)
+    if (argumentName == recArguments[i].arg_name) {
+      //Serial.print("Found: ");
+      //Serial.print(recArguments[i].arg_name);
+      //Serial.print("\t with value: ");
+      //Serial.println(recArguments[i].arg_value);
+      return recArguments[i].arg_value;
+    }
+  return "";
+}
+
+void getArguments() {
   String message = "URI: ";
   message += server.uri();
   message += "";
@@ -71,10 +88,13 @@ void readArguments() {
   //writeLine(message);
   
   message = "Arg:";
-  for (uint8_t i = 0; i < 6; i++) {
+  for (uint8_t i = 0; i < MAX_ARGUMENTS; i++) {
     recArguments[i].arg_name = "";
     recArguments[i].arg_value = "";
   }
+  //Serial.print("Number of arguments: ");
+  //Serial.println(server.args());
+  
   for (uint8_t i = 0; i < server.args(); i++) {
     recArguments[i].arg_name = server.argName(i);
     recArguments[i].arg_value = server.arg(i);
@@ -83,6 +103,6 @@ void readArguments() {
   //message += "";
 
   // print it
-  Serial.println(message);
-  writeLine(message);
+  //Serial.println(message);
+  //writeLine(message);
 }

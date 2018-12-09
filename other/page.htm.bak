@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-2"><meta name="viewport" content="width=device-width, initial-scale=1">      <link rel="icon" href="data:,">      <style>
+body { max-width : 364px; background-color : #aaaaaa}
+html {  font-family: Helvetica; font-size: 10px;  display: inline-block;  margin: 0px auto 5px auto;  text-align: center;}      
+
+div {  float:left;  border: 1px solid #ddd;  background-color: #bbb; margin: 2px 2px 2px 2px;}      
+
+.menu button { background-color: #ddd; border: none; color: #333; text-decoration: none; font-size: 14px; margin: 0px; cursor: pointer;  height: 48px;  width: 84px; }
+
+.group button { background-color: #fff; border: none; color: #333; text-decoration: none; font-size: 14px; margin: 0px; cursor: pointer;  height: 84px;  width: 84px;}  
+.group a { display:block; }
+.group img {margin : 0px; padding : 0px; border:0px;}
+
+button:hover { background-color: #ccc;}      
+.on {   background-color: #fb1;}      
+.on:hover {   background-color: #fc7;}      
+
+.shield { height : 96px; } 
+.shield button { background-repeat: no-repeat;  background-position: center; }
+.shield button.up { background-image:url('icons/sbu.svg'); height: 32px; }
+
+.shield button.st { background-image:url('icons/sbst.svg'); height: 32px; } 
+
+.shield button.dn { background-image:url('icons/sbd.svg'); height: 32px; }
+
+</style>
+<script type="application/javascript">
+function showGroup(group) {
+		document.getElementById("g1").style.display = (group == "g1" ? "block" : "none");
+		document.getElementById("g2").style.display  = (group == "g2" ? "block" : "none");
+		document.getElementById("g3").style.display  = (group == "g3" ? "block" : "none");
+		document.getElementById("g4").style.display  = (group == "g4" ? "block" : "none");
+	}
+</script></head>      
+<body>
+<div class="menu">
+	<div><button onClick="showGroup('g1');">Parter osw</button></div>	
+	<div><button onClick="showGroup('g2');">Parter rol</button></div>
+	<div><button onClick="showGroup('g3');">Pietro osw</button></div>
+	<div><button onClick="showGroup('g4');">Pietro rol</button></div>
+</div>
+<div class="group" id="g1">
+	<div><a href="http://192.168.1.118/?item=1&amp;value=ON"><button>Kuchnia 1</button></a></div>
+	<div><a href="http://192.168.1.118/?item=2&amp;value=ON"><button>Kuchnia 2</button></a></div>
+	<div><a href="http://192.168.1.118/?item=3&amp;value=ON"><button>Jadalnia 1</button></a></div>
+	<div><a href="http://192.168.1.118/?item=4&amp;value=ON"><button>Jadalnia 2</button></a></div>
+	<div><a href="http://192.168.1.118/?item=5&amp;value=ON"><button>Salon 1</button></a></div>
+	<div><a href="http://192.168.1.118/?item=6&amp;value=ON"><button>Salon 2</button></a></div>
+	<div><a href="http://192.168.1.118/?item=7&amp;value=ON"><button>Biuro</button></a></div>
+	<div><a href="http://192.168.1.118/?item=8&amp;value=ON"><button>Lazienka</button></a></div>
+	<div><a href="http://192.168.1.118/?item=9&amp;value=ON"><button>Pom Gosp</button></a></div>
+	<div><a href="http://192.168.1.118/?item=10&amp;value=ON"><button>Wiatrolap</button></a></div>
+	<div><a href="http://192.168.1.118/?item=11&amp;value=ON"><button>Garaz 1</button></a></div>
+	<div><a href="http://192.168.1.118/?item=12&amp;value=ON"><button>Garaz 2</button></a></div>
+	<div><a href="http://192.168.1.118/?item=13&amp;value=ON"><button>Drzwi</button></a></div>
+	<div><a href="http://192.168.1.118/?item=14&amp;value=ON"><button>Brama</button></a></div>
+	<div><a href="http://192.168.1.118/?item=15&amp;value=ON"><button>Taras 1</button></a></div>
+	<div><a href="http://192.168.1.118/?item=16&amp;value=ON"><button>Taras 2</button></a></div>
+</div>
+<div class="group" id="g2" style="display:none;">
+	<div class="shield">
+		<a href="?"><button class="up"> </button></a>
+		<a href="?"><button class="st">Kuchnia</button></a>
+		<a href="?"><button class="dn"> </button></a>
+	</div>
+	<div class="shield">
+		<a href="?"><button class="up"> </button></a>
+		<a href="?"><button class="st">Narozne</button></a>
+		<a href="?"><button class="dn"> </button></a>
+	</div>
+	<!--
+	<div><a href="http://192.168.1.118/?item=18&amp;value=ON"><button>Narozne</button></a></div>
+	<div><a href="http://192.168.1.118/?item=19&amp;value=ON"><button>Jadalnia</button></a></div>
+	<div><a href="http://192.168.1.118/?item=20&amp;value=ON"><button>Salon</button></a></div>
+	<div><a href="http://192.168.1.118/?item=21&amp;value=ON"><button>Ogrod HS</button></a></div>
+	<div><a href="http://192.168.1.118/?item=22&amp;value=ON"><button>Biuro</button></a></div>
+	<div><a href="http://192.168.1.118/?item=23&amp;value=ON"><button>Garaz</button></a></div>
+	<div><a href="http://192.168.1.118/?item=24&amp;value=ON"><button>Pom Gosp</button></a></div>
+	-->
+</div>
+</body>
+</html>
