@@ -52,7 +52,7 @@ ItemsDef HomeItems[] = {
   {8, 1, LIGHT, OFF, OFF, 0, "Biuro 2", "o_biuro_2", 0, 0, 5 + LIGHTS_OFFSET, 255, 0, 0},
   {9, 1, LIGHT, OFF, OFF, 0, "Lazienka", "o_lazienka", 0, 0, 14 + LIGHTS_OFFSET, 255, 0, 0},
   {10, 1, LIGHT, OFF, OFF, 0, "Klatka sch", "o_klatka_d", 0, 0, 2 + LIGHTS_OFFSET, 255, 0, 0},
-  {11, 1, LIGHT, OFF, OFF, 0, "Przedpokoj", "o_przedpok", 0, 0, 13 + LIGHTS_OFFSET, 255, 0, 0},
+  {11, 1, LIGHT, OFF, OFF, 0, "Przedpok", "o_przedpok", 0, 0, 13 + LIGHTS_OFFSET, 255, 0, 0},
   {12, 1, LIGHT, OFF, OFF, 0, "Wiatrolap", "o_wiatrolap", 0, 0, 15 + LIGHTS_OFFSET, 255, 0, 0},
   {13, 1, LIGHT, OFF, OFF, 0, "Garaz 1", "o_garaz_1", 0, 0, 0 + LIGHTS_OFFSET, 255, 0, 0},
   {14, 1, LIGHT, OFF, OFF, 0, "Garaz 2", "o_garaz_2", 0, 0, 1 + LIGHTS_OFFSET, 255, 0, 0},

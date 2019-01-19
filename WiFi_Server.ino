@@ -1,6 +1,47 @@
 
 String temp_string;
 
+void wifi_test_connection() {
+  static long last_check;
+  const long check_every = 30000;
+  static int last_state = -10;
+  int current_state = wifiMulti.run();
+  if (last_check+check_every < millis()) {
+    writeLine("IP address: " + WiFi.localIP().toString()); 
+    last_check = millis();
+  }
+  if (current_state == last_state)
+    return;
+  if (current_state != WL_CONNECTED) {
+    Serial.println("WiFi not connected!");
+    writeLine("WiFi not connected!");
+  }
+  if (current_state == WL_CONNECTED) {
+    Serial.println("WiFi connected:");
+    Serial.println(WiFi.SSID());
+    writeLine("AP: " + WiFi.SSID()); 
+    Serial.print("IP: ");
+    Serial.println(WiFi.localIP());
+    writeLine("IP address: " + WiFi.localIP().toString());    
+  }
+  last_state = current_state;
+}
+
+void wifi_multi_setup() {
+  String con_ssid;
+  Serial.println("Connecting...");
+  delay(10);
+  WiFi.mode(WIFI_STA);
+  for (byte n=0; n < NUMBER_OF_AP; n++)
+    wifiMulti.addAP(ap_login[n].ssid, ap_login[n].password);
+  if (wifiMulti.run() == WL_CONNECTED) {
+    Serial.println("WiFi connected");
+    Serial.print("IP: ");
+    Serial.println(WiFi.localIP());
+    writeLine("IP address: " + WiFi.localIP().toString());
+  }
+}
+
 void wifi_setup() {
   // Connect to Wi-Fi network with SSID and password
   String con_ssid;

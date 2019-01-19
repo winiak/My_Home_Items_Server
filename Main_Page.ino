@@ -28,8 +28,8 @@ void mainPage() {
       body { max-width : 364px; background-color : #aaaaaa}\
       html {  font-family: Helvetica; font-size: 10px;  display: inline-block;  margin: 0px auto 5px auto;  text-align: center;}\
       div {  float:left;  border: 1px solid #ddd;  background-color: #bbb; margin: 2px 2px 2px 2px;}  \
-      .menu button { background-color: #ddd; border: none; color: #333; text-decoration: none; font-size: 12px; margin: 0px; cursor: pointer;  height: 48px;  width: 84px; }\
-      .group button { background-color: #fff; border: none; color: #333; text-decoration: none; font-size: 14px; margin: 0px; cursor: pointer;  height: 84px;  width: 84px;}\
+      .menu button { background-color: #ddd; border: none; color: #333; text-decoration: none; font-size: 10px; margin: 0px; cursor: pointer;  height: 48px;  width: 64px; }\
+      .group button { background-color: #fff; border: none; color: #333; text-decoration: none; font-size: 12px; margin: 0px; cursor: pointer;  height: 64px;  width: 64px;}\
       .group a { display:block; }\
       .group img {margin : 0px; padding : 0px; border:0px;}\
       \
@@ -37,7 +37,7 @@ void mainPage() {
       button.on {   background-color: #fb1;}\
       button.on:hover {   background-color: #fc7;}\
       .shield { height : 96px; } \
-      .shield button { background-repeat: no-repeat;  background-position: center; }\
+      .shield button { background-color: #fff; background-repeat: no-repeat;  background-position: center;  height: 84px;  width: 84px; }\
       .shield button.up { background-image:url('icons/sbu.svg'); height: 32px; }\      
       .shield button.up_on { background-image:url('icons/sbu.svg?color=red'); height: 32px; }\ 
       .shield button.up_ok { background-image:url('icons/sbu.svg?color=green'); height: 32px; }\  
@@ -107,7 +107,7 @@ void mainPage() {
             out.concat(HomeItems[i].id);
             out += "&value=UP\"><button ";
             out += (HomeItems[i].current_state == UP ? " class=\"up_ok\"" : ((HomeItems[i].current_state == ON) && (HomeItems[i].set_state == UP) ? " class=\"up_on\"" : " class=\"up\"" ));  
-            out += "> </button></a>";
+            out += "></button></a>";
             out += "<a href=\"?group=";
             out.concat(gid);
             out += "&item=";
@@ -123,7 +123,7 @@ void mainPage() {
             out.concat(HomeItems[i].id);
             out += "&value=DOWN\"><button ";
             out += (HomeItems[i].current_state == DOWN ? " class=\"dn_ok\"" : ((HomeItems[i].current_state == ON) && (HomeItems[i].set_state == DOWN) ? " class=\"dn_on\"" : " class=\"dn\"" ));  
-            out += "> </button></a>";
+            out += "></button></a>";
             out += "</div>";
         }
       }
